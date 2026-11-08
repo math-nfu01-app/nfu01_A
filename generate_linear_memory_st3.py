@@ -205,6 +205,7 @@ st.subheader(
 # =====================================================
 # グラフ描画
 # =====================================================
+
 fig, ax = plt.subplots(figsize=(6, 6))
 
 x = np.linspace(-6, 6, 400)
@@ -216,6 +217,13 @@ colors = [
     "orange"
 ]
 
+labels = [
+    "Choice1",
+    "Choice2",
+    "Choice3",
+    "Choice4"
+]
+
 for i, (aa, bb) in enumerate(st.session_state.choices):
 
     y = aa * x + bb
@@ -224,28 +232,9 @@ for i, (aa, bb) in enumerate(st.session_state.choices):
         x,
         y,
         color=colors[i],
-        linewidth=line_width
+        linewidth=line_width,
+        label=labels[i]
     )
-
-    # グラフ上に番号を表示
-    x_text = 2
-    y_text = aa * x_text + bb
-
-    if -6 <= y_text <= 6:
-
-        ax.text(
-            x_text,
-            y_text,
-            str(i + 1),
-            color=colors[i],
-            fontsize=18,
-            fontweight="bold",
-            bbox=dict(
-                facecolor="white",
-                edgecolor="black",
-                alpha=0.8
-            )
-        )
 
 ax.axhline(0, color="black")
 ax.axvline(0, color="black")
@@ -254,8 +243,10 @@ ax.set_xlim(-6, 6)
 ax.set_ylim(-6, 6)
 
 ax.grid(True)
+ax.legend()
 
 st.pyplot(fig)
+
 
 # =====================================================
 # 回答
