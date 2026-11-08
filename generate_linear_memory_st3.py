@@ -12,7 +12,8 @@ from google.oauth2.service_account import Credentials
 # =====================================================
 # フォント設定
 # =====================================================
-plt.rcParams["font.family"] = "Meiryo"
+
+#plt.rcParams["font.family"] = "Meiryo"
 
 # =====================================================
 # 一次関数の式表示
@@ -200,14 +201,13 @@ st.subheader(
     f"問題： {format_linear(a, b)}"
 )
 
+
 # =====================================================
 # グラフ描画
 # =====================================================
 fig, ax = plt.subplots(figsize=(6, 6))
 
 x = np.linspace(-6, 6, 400)
-
-
 
 colors = [
     "red",
@@ -228,7 +228,7 @@ for i, (aa, bb) in enumerate(st.session_state.choices):
     )
 
     # グラフ上に番号を表示
-    x_text = 5.2
+    x_text = 2
     y_text = aa * x_text + bb
 
     if -6 <= y_text <= 6:
@@ -238,11 +238,11 @@ for i, (aa, bb) in enumerate(st.session_state.choices):
             y_text,
             str(i + 1),
             color=colors[i],
-            fontsize=14,
+            fontsize=18,
             fontweight="bold",
             bbox=dict(
                 facecolor="white",
-                edgecolor="none",
+                edgecolor="black",
                 alpha=0.8
             )
         )
@@ -254,8 +254,6 @@ ax.set_xlim(-6, 6)
 ax.set_ylim(-6, 6)
 
 ax.grid(True)
-
-###
 
 st.pyplot(fig)
 
